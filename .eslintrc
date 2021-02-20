@@ -1,0 +1,147 @@
+// {
+//   "root": true,
+//   "parser": "@typescript-eslint/parser",
+//   "parserOptions": {
+//     // Allows for the parsing of modern ECMAScript features
+//     "ecmaVersion": 2020,
+//     // Allows for the use of imports
+//     "sourceType": "module",
+//     "ecmaFeatures": {
+//       // Allows for the parsing of JSX
+//       "jsx": true
+//     }
+//   },
+//   "plugins": ["@typescript-eslint"],
+//   "settings": {
+//     "react": {
+//       // Tells eslint-plugin-react to automatically detect the version of React to use
+//       "version": "detect"
+//     }
+//   },
+//   "extends": [
+//     "plugin:react/recommended",
+//     "plugin:@typescript-eslint/recommended"
+//     // "plugin:prettier/recommended",
+//     // "airbnb-typescript",
+//     // "prettier",
+//     // "prettier/@typescript-eslint",
+//     // "prettier/react"
+//   ],
+//   "env": {
+//     "jest": true
+//   },
+//   "rules": {
+//     // Make prettier code formatting suggestions more verbose.
+//     // "prettier/prettier": ["warn"],
+//     // Disable <Fragment> => <> replacement. Feel free to change
+//     // "react/jsx-fragments": "off",
+//     // Disable prefer default export
+//     // "import/prefer-default-export": "off"
+//   }
+// }
+
+// {
+//   "extends": ["airbnb-typescript"],
+//   "parserOptions": {
+//     "project": "./tsconfig.json"
+//   },
+//   "settings": {
+//     "import/resolver": {
+//       "node": {
+//         "paths": ["src"]
+//       }
+//     }
+//   },
+//   "rules": {
+//     "@typescript-eslint/no-unused-expressions": ["error", { "allowShortCircuit": true }],
+//     "@typescript-eslint/no-use-before-define": "off",
+//     "@typescript-eslint/type-annotation-spacing": ["error"],
+//     "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
+//     "arrow-parens": "off",
+//     "consistent-return": "off",
+//     "import/prefer-default-export": "off",
+//     "jsx-a11y/label-has-associated-control": "off",
+//     "max-len": ["error", { "code": 150, "tabWidth": 2 }],
+//     "no-alert": "off",
+//     "no-await-in-loop": "off",
+//     "no-confusing-arrow": "off",
+//     "no-console": "off",
+//     "no-continue": "off",
+//     "no-param-reassign": ["error", { "props": false }],
+//     "no-plusplus": "off",
+//     "no-restricted-globals": "off",
+//     "no-shadow": "off",
+//     "object-curly-newline": "off",
+//     "operator-linebreak": ["error", "after"],
+//     "react/prop-types": [0],
+//     "react/button-has-type": "off",
+//     "comma-dangle": ["error", "always-multiline"],
+
+//     "no-multi-spaces": ["error"]
+//     // TODO: no more 1
+//     // "no-multiple-empty-lines": ["error", { "max": 1, maxBOF: 0 }]
+//   }
+// }
+
+// TODO
+// import/order
+
+// arrow-parens
+
+// new line before return
+
+// align arguments
+// function(
+//   a,
+//   b,
+// );
+
+
+// member-delimiter-style
+// ts interfaces
+
+// https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/ROADMAP.md
+
+// TO ADD
+// https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
+// "@typescript-eslint/type-annotation-spacing": ["error"],
+
+// https://eslint.org/docs/rules/no-multi-spaces
+// "no-multi-spaces": ["error"]
+
+// https://eslint.org/docs/rules/arrow-spacing
+// "arrow-spacing": ["error"]
+
+// https://eslint.org/docs/rules/no-whitespace-before-property
+// "no-whitespace-before-property": ["error"]
+
+// https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/space-before-function-paren.md
+// "space-before-function-paren": "off"
+// "@typescript-eslint/space-before-function-paren": ["error", {
+//   "anonymous": "always",
+//   "named": "always",
+//   "asyncArrow": "always"
+// }]
+
+// https://eslint.org/docs/rules/space-in-parens
+// "space-in-parens": ["error", "never"]
+
+// https://eslint.org/docs/rules/space-before-blocks
+// space-before-blocks
+
+// https://eslint.org/docs/rules/comma-dangle exist
+// "comma-dangle": ["error", "always-multiline"]
+
+// https://eslint.org/docs/rules/space-infix-ops exist
+// space-infix-ops
+
+// https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md
+// "react/jsx-tag-spacing": ["error", {
+//   "closingSlash": "never",
+//   "beforeSelfClosing": "always",
+//   "afterOpening": "never",
+//   "beforeClosing": "never",
+// }],
+
+// https://github.com/yannickcr/eslint-plugin-react/blob/HEAD/docs/rules/jsx-curly-spacing.md
+// "react/jsx-curly-spacing": ["error", { "when": "never", "children": true }]
