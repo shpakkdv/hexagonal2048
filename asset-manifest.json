@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/hexagonal2048/static/css/main.24eec44d.chunk.css",
+    "main.js": "/hexagonal2048/static/js/main.dbe0137f.chunk.js",
+    "runtime-main.js": "/hexagonal2048/static/js/runtime-main.0c4d3193.js",
+    "static/css/2.24bf1742.chunk.css": "/hexagonal2048/static/css/2.24bf1742.chunk.css",
+    "static/js/2.1d990af4.chunk.js": "/hexagonal2048/static/js/2.1d990af4.chunk.js",
+    "index.html": "/hexagonal2048/index.html",
+    "precache-manifest.7cbb1c7d6e4094dec033c244398d4061.js": "/hexagonal2048/precache-manifest.7cbb1c7d6e4094dec033c244398d4061.js",
+    "service-worker.js": "/hexagonal2048/service-worker.js",
+    "static/js/2.1d990af4.chunk.js.LICENSE.txt": "/hexagonal2048/static/js/2.1d990af4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0c4d3193.js",
+    "static/css/2.24bf1742.chunk.css",
+    "static/js/2.1d990af4.chunk.js",
+    "static/css/main.24eec44d.chunk.css",
+    "static/js/main.dbe0137f.chunk.js"
+  ]
+}
