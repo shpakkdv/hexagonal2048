@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/hexagonal2048/static/css/main.24eec44d.chunk.css",
-    "main.js": "/hexagonal2048/static/js/main.71c02273.chunk.js",
+    "main.css": "/hexagonal2048/static/css/main.285131c6.chunk.css",
+    "main.js": "/hexagonal2048/static/js/main.5bb42641.chunk.js",
     "runtime-main.js": "/hexagonal2048/static/js/runtime-main.0c4d3193.js",
     "static/css/2.24bf1742.chunk.css": "/hexagonal2048/static/css/2.24bf1742.chunk.css",
-    "static/js/2.1d990af4.chunk.js": "/hexagonal2048/static/js/2.1d990af4.chunk.js",
+    "static/js/2.d768be1e.chunk.js": "/hexagonal2048/static/js/2.d768be1e.chunk.js",
     "index.html": "/hexagonal2048/index.html",
-    "precache-manifest.7c2a05490229d088734835077636c212.js": "/hexagonal2048/precache-manifest.7c2a05490229d088734835077636c212.js",
+    "precache-manifest.348d5f751be075c0e2194d9ae6b551f3.js": "/hexagonal2048/precache-manifest.348d5f751be075c0e2194d9ae6b551f3.js",
     "service-worker.js": "/hexagonal2048/service-worker.js",
-    "static/js/2.1d990af4.chunk.js.LICENSE.txt": "/hexagonal2048/static/js/2.1d990af4.chunk.js.LICENSE.txt"
+    "static/js/2.d768be1e.chunk.js.LICENSE.txt": "/hexagonal2048/static/js/2.d768be1e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0c4d3193.js",
     "static/css/2.24bf1742.chunk.css",
-    "static/js/2.1d990af4.chunk.js",
-    "static/css/main.24eec44d.chunk.css",
-    "static/js/main.71c02273.chunk.js"
+    "static/js/2.d768be1e.chunk.js",
+    "static/css/main.285131c6.chunk.css",
+    "static/js/main.5bb42641.chunk.js"
   ]
 }
