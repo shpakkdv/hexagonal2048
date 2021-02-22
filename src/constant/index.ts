@@ -1,6 +1,9 @@
 // single constants
-export const DEFAULT_GAME_SIZE = 3;
+export const SERVER_URL = 'http://localhost:13337';
 export const DEFAULT_CELL_SIZE = 40;
+export const CELL_SIZE_RANGE = [3, 250] as const;
+export const DEFAULT_GAME_SIZE = 3;
+export const GAME_SIZE_RANGE = [2, 20] as const;
 
 // enums
 export enum AppStatus {
@@ -11,6 +14,11 @@ export enum AppStatus {
 export enum GameMode {
   Pointy = 'pointy',
   Flat = 'flat',
+}
+
+export enum GamePlayMode {
+  Online = 'online',
+  Offline = 'offline',
 }
 
 export enum Direction {

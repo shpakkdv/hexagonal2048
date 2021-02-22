@@ -14,6 +14,9 @@ export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, cellSize 
     height: hexagonSize,
     lineHeight: hexagonSize,
     fontSize: `${cellSize / 2.5}px`,
+    padding: `0 ${cellSize * 0.1}px`,
+    marginRight: `${isPointyMode ? 0 : cellSize * 0.125}px`,
+    marginBottom: `${isPointyMode ? cellSize * 0.125 : 0}px`,
   };
   const isDevMode = !!(window as any).DEBBUG_DEV_MODE;
 
@@ -29,7 +32,8 @@ export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, cellSize 
                 }
 
                 const [q, r, value] = cell;
-                const title = isDevMode ? `q: ${q}, r: ${r}` : undefined;
+                const displayValue = value || '';
+                const title = isDevMode ? `q: ${q}, r: ${r}, value: ${value}` : String(displayValue);
                 const valueLevel = value && Math.log2(value);
                 const ratio = 10;
                 const gColor = valueLevel ? clamp(255 - valueLevel * ratio, 165, 255) : 255;
@@ -41,7 +45,7 @@ export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, cellSize 
 
                 return (
                   <div className={styles.item} style={cellStyle} key={cell.join()} title={title}>
-                    {value || ''}
+                    {displayValue}
                   </div>
                 );
               })}

@@ -1,29 +1,40 @@
-import type { AppStatus, GameMode } from 'constant';
+import type { AppStatus, GameMode, GamePlayMode } from 'constant';
 
 export * from './common';
 
 export type FakeCell = null;
-/**
- * [q - rowIndex, r - cellIndex, value]
- */
-export type RealCell = [number, number, number | null];
-/**
- * [q - rowIndex, r - cellIndex, value]
- */
+/** null or number among the range [2, 4, ... Math.pow(2, n)] */
+export type CellValue = number | null;
+
+/** Axial coordinates real cell info: `[q - rowIndex, r - cellIndex, value]` */
+export type RealCell = [number, number, CellValue];
+/** Axial coordinates cell info: `[q - rowIndex, r - cellIndex, value]` */
 export type Cell = RealCell | FakeCell;
 export type HexagonArray = Cell[][];
+
+/** Cube coordinates real cell info */
+export interface CubeRealCell {
+  x: number;
+  y: number;
+  z: number;
+  value: CellValue;
+}
+/** Cube coordinates cell info */
+export type CubeCell = CubeRealCell | FakeCell;
+export type HexagonCubeArray = CubeCell[][];
 
 export type GetDirectionRow = (field: HexagonArray, r: number, q: number) => Cell[];
 
 export interface AppState {
   controls: {
     appStatus: AppStatus;
-    /** Integer: [2..10] */
+    /** Integer */
     gameSize: number;
-    /** Integer: [5..200] */
+    /** Integer in px */
     cellSize: number;
     valuesToAdd: number[];
     gameMode: GameMode;
+    gamePlayMode: GamePlayMode;
   };
 
   gameField: {

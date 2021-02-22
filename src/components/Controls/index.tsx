@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 
 import { NumericInput } from 'components/NumericInput';
 import { RadioButtons } from 'components/RadioButtons';
-import { AppStatus, Direction, GameMode } from 'constant';
+import { AppStatus, Direction, GameMode, GamePlayMode, GAME_SIZE_RANGE, CELL_SIZE_RANGE } from 'constant';
 import type * as ControlsModels from 'containers/Controls/models';
 import { ControlsProps } from './models';
 import styles from './styles.module.scss';
@@ -16,13 +16,16 @@ export const Controls: React.FC<ControlsProps> = ({
   gameMode,
   setGameMode,
 
+  gamePlayMode,
+  changeGamePlayMode,
+
   gameSize,
   changeGameSize,
 
   cellSize,
   setCellSize,
 }) => {
-  const [isSettingsVisible, setSettingsVisibility] = useState(true);
+  const [isSettingsVisible, setSettingsVisibility] = useState(false);
   const onSettingsClick = useCallback(() => setSettingsVisibility(visible => !visible), [setSettingsVisibility]);
   const isFlatMode = gameMode === GameMode.Flat;
   const isGameFinished = appStatus === AppStatus.Finished;
@@ -31,7 +34,7 @@ export const Controls: React.FC<ControlsProps> = ({
     <div className={styles.Controls}>
       <div className={styles.column}>
         <div className={styles.settings}>
-          <p onClick={onSettingsClick}><span>{isSettingsVisible ? '–' : '+'}</span>Game settings (click to expand/collapse):</p>
+          <p onClick={onSettingsClick}><span>{isSettingsVisible ? '–' : '+'}</span>Game settings (click to expand/collapse)</p>
           {isSettingsVisible && (
             <>
               <div>
@@ -42,7 +45,7 @@ export const Controls: React.FC<ControlsProps> = ({
                   id="game_size"
                   value={gameSize}
                   label="Game size"
-                  range={[2, 10]}
+                  range={GAME_SIZE_RANGE}
                   onChange={changeGameSize}
                 />
               </div>
@@ -51,19 +54,30 @@ export const Controls: React.FC<ControlsProps> = ({
                   id="hexagon_size"
                   value={cellSize}
                   label="Hexagon size"
-                  range={[5, 200]}
+                  range={CELL_SIZE_RANGE}
                   onChange={setCellSize}
                 />
               </div>
               <div>
                 <RadioButtons
-                  title="Select a game mode:"
+                  title="Select a visual game mode:"
                   options={[
                     { id: GameMode.Flat, label: 'Flat topped' },
                     { id: GameMode.Pointy, label: 'Pointy topped' },
                   ]}
                   checkedId={gameMode}
                   onChange={setGameMode}
+                />
+              </div>
+              <div>
+                <RadioButtons
+                  title="Select a play game mode:"
+                  options={[
+                    { id: GamePlayMode.Online, label: 'Online: play with server data' },
+                    { id: GamePlayMode.Offline, label: 'Offline: generate data locally' },
+                  ]}
+                  checkedId={gamePlayMode}
+                  onChange={changeGamePlayMode}
                 />
               </div>
             </>

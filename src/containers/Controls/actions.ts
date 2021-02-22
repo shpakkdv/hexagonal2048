@@ -36,10 +36,24 @@ export const setGameSize: ActionCreator.SetGameSize = (gameSize) => ({
   },
 });
 
-export const changeGameSize: ActionCreator.SetGameSize = (gameSize) => ({
+export const changeGameSize: ActionCreator.ChangeGameSize = (gameSize) => ({
   type: ActionType.CHANGE_GAME_SIZE,
   payload: {
     gameSize,
+  },
+});
+
+export const changeGamePlayMode: ActionCreator.ChangeGamePlayMode = (gamePlayMode) => ({
+  type: ActionType.CHANGE_GAME_PLAY_MODE,
+  payload: {
+    gamePlayMode,
+  },
+});
+
+export const setGamePlayMode: ActionCreator.SetGamePlayMode = (gamePlayMode) => ({
+  type: ActionType.SET_GAME_PLAY_MODE,
+  payload: {
+    gamePlayMode,
   },
 });
 

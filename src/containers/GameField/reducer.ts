@@ -1,13 +1,15 @@
 import { Reducer } from 'redux';
 
-import { DEFAULT_GAME_SIZE } from 'constant';
 import { IAction } from 'models';
-import { createInitialHexagon } from 'utils/createInitialHexagon';
+import { createInitialGameField } from 'utils/createInitialGameField';
+import { getDefaultGameInfo } from 'utils/getDefaultGameInfo';
 import { ActionType } from './constants';
 import { State, Action } from './models';
 
+const { gameSize, gamePlayMode } = getDefaultGameInfo();
+
 const initialState: State = {
-  field: createInitialHexagon(DEFAULT_GAME_SIZE),
+  field: createInitialGameField(gameSize, gamePlayMode),
 };
 
 const reducer: Reducer<State, IAction> = (state = initialState, action) => {

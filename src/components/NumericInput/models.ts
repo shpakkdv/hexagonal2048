@@ -4,7 +4,7 @@ export interface NumericInputProps {
   label: string;
   disabled?: boolean;
   onChange: (value: number) => void
-  range: [number, number];
+  range: readonly [number, number];
   step?: number;
   integer?: boolean;
 }

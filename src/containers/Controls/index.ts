@@ -3,22 +3,25 @@ import { createStructuredSelector } from 'reselect';
 
 import { Controls } from 'components/Controls';
 import {
+  changeGamePlayMode,
   changeGameSize,
   move,
   setCellSize,
   setGameMode,
   startOver,
 } from './actions';
-import { appStatus, cellSize, gameMode, gameSize } from './selectors';
+import { appStatus, cellSize, gameMode, gamePlayMode, gameSize } from './selectors';
 
 const mapStateToProps = createStructuredSelector({
   appStatus,
   cellSize,
   gameMode,
+  gamePlayMode,
   gameSize,
 });
 
 const mapDispatchToProps = {
+  changeGamePlayMode,
   changeGameSize,
   move,
   setCellSize,

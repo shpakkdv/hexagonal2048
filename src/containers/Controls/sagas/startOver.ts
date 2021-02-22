@@ -4,7 +4,7 @@ import { put, select } from 'redux-saga/effects';
 import { AppStatus } from 'constant';
 import { setAppStatus } from 'containers/Controls/actions';
 import { setField } from 'containers/GameField/actions';
-import { createInitialHexagon } from 'utils/createInitialHexagon';
+import { createInitialGameField } from 'utils/createInitialGameField';
 import { setGameSize } from '../actions';
 import { Action } from '../models';
 import * as controlsSelectors from '../selectors';
@@ -17,7 +17,8 @@ export function* startOver(action: Action.StartOver) {
     }
 
     const gameSize: ReturnSagaType<typeof controlsSelectors.gameSize> = yield select(controlsSelectors.gameSize);
-    const field = createInitialHexagon(gameSize);
+    const gamePlayMode: ReturnSagaType<typeof controlsSelectors.gamePlayMode> = yield select(controlsSelectors.gamePlayMode);
+    const field = createInitialGameField(gameSize, gamePlayMode);
 
     yield put(batchActions([
       setGameSize(gameSize),
