@@ -3,10 +3,12 @@ import { clamp } from 'lodash';
 import React from 'react';
 
 import { GameMode } from 'constant';
+import { toCubeCell } from 'utils/coordinatesConverter';
+import { getNonEmptyCells } from 'utils/getCells';
 import { GameFieldProps } from './models';
 import styles from './styles.module.scss';
 
-export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, cellSize }) => {
+export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, gameSize, cellSize, initiateField }) => {
   const isPointyMode = gameMode === GameMode.Pointy;
   const hexagonSize = `${cellSize}px`;
   const commonCellStyle: React.CSSProperties = {
@@ -19,6 +21,11 @@ export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, cellSize 
     marginBottom: `${isPointyMode ? cellSize * 0.125 : 0}px`,
   };
   const isDevMode = !!(window as any).DEBBUG_DEV_MODE;
+  const isFieldEmpty = getNonEmptyCells(field).length === 0;
+
+  if (isFieldEmpty) {
+    initiateField();
+  }
 
   return (
     <div className={classNames(styles.GameField, { [styles.pointy]: isPointyMode })}>
@@ -34,6 +41,7 @@ export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, cellSize 
                 const [q, r, value] = cell;
                 const displayValue = value || '';
                 const title = isDevMode ? `q: ${q}, r: ${r}, value: ${value}` : String(displayValue);
+                // TODO: create better logic
                 const valueLevel = value && Math.log2(value);
                 const ratio = 10;
                 const gColor = valueLevel ? clamp(255 - valueLevel * ratio, 165, 255) : 255;
@@ -43,8 +51,19 @@ export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, cellSize 
                   backgroundColor: `rgb(255 ${gColor} ${bColor})`,
                 };
 
+                const { x, y, z } = toCubeCell(cell, gameSize);
+
                 return (
-                  <div className={styles.item} style={cellStyle} key={cell.join()} title={title}>
+                  <div
+                    key={cell.join()}
+                    className={styles.item}
+                    style={cellStyle}
+                    title={title}
+                    data-x={x}
+                    data-y={y}
+                    data-z={z}
+                    data-value={value || 0}
+                  >
                     {displayValue}
                   </div>
                 );

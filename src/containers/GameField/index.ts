@@ -2,14 +2,20 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { GameField } from 'components/GameField';
-import { appStatus, cellSize, gameMode } from 'containers/Controls/selectors';
+import { initiateField } from 'containers/Controls/actions';
+import { appStatus, cellSize, gameMode, gameSize } from 'containers/Controls/selectors';
 import { field } from './selectors';
 
 const mapStateToProps = createStructuredSelector({
   field,
   gameMode,
+  gameSize,
   appStatus,
   cellSize,
 });
 
-export default connect(mapStateToProps)(GameField);
+const mapDispatchToProps = {
+  initiateField,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameField);

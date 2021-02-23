@@ -2,9 +2,10 @@ import { keyMirror } from 'utils/keyMirror';
 
 export const ActionType = keyMirror(
   {
-    MOVE: null,
     CHANGE_GAME_PLAY_MODE: null,
     CHANGE_GAME_SIZE: null,
+    INITIATE_FIELD: null,
+    MOVE: null,
     SET_APP_STATUS: null,
     SET_CELL_SIZE: null,
     SET_GAME_PLAY_MODE: null,

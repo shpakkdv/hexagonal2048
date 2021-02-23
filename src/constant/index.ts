@@ -38,12 +38,12 @@ export const KeyCodesToHandleFlatMode = ['KeyW', 'KeyE', 'KeyA', 'KeyF', 'KeyS',
 type KeyCodeToHandleFlatMode = typeof KeyCodesToHandleFlatMode[number];
 
 export const DirectionByKeyPointyMode: Record<KeyCodeToHandlePointyMode, Direction> = {
-  KeyQ: Direction.TopLeft,
+  KeyE: Direction.TopLeft,
   KeyW: Direction.Top,
-  KeyE: Direction.TopRight,
-  KeyA: Direction.BottomLeft,
+  KeyQ: Direction.TopRight,
+  KeyD: Direction.BottomLeft,
   KeyS: Direction.Bottom,
-  KeyD: Direction.BottomRight,
+  KeyA: Direction.BottomRight,
 };
 
 export const DirectionByKeyCodeFlatMode: Record<KeyCodeToHandleFlatMode, Direction> = {

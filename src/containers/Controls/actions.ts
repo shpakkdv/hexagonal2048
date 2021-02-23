@@ -60,3 +60,7 @@ export const setGamePlayMode: ActionCreator.SetGamePlayMode = (gamePlayMode) => 
 export const startOver: ActionCreator.StartOver = () => ({
   type: ActionType.START_OVER,
 });
+
+export const initiateField: ActionCreator.InitiateField = () => ({
+  type: ActionType.INITIATE_FIELD,
+});

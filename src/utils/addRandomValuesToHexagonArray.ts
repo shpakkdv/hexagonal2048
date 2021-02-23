@@ -19,6 +19,12 @@ export function addRandomValuesToHexagonArray(field: HexagonArray, valuesToAdd: 
 
 export async function addRandomValuesToHexagonArrayOnline(url: string, field: HexagonArray, gameSize: number): Promise<void> {
   const nonEmptyCells = getNonEmptyCells(field);
+
+  // TODO
+  // if (nonEmptyCells.length === amountOfRealCells) {
+  //   return;
+  // }
+
   const cubeStringifiedCells = JSON.stringify(nonEmptyCells.map(axialCell => toCubeCell(axialCell, gameSize)));
   const response = await fetch(url, { method: 'POST', body: cubeStringifiedCells });
   const cubeCellsToAdd: CubeRealCell[] = await response.json();
@@ -31,6 +37,6 @@ export async function addRandomValuesToHexagonArrayOnline(url: string, field: He
 }
 
 // TODO: create logic
-function getAmountOfValuesToAdd(valuesToAdd: number[]) {
+function getAmountOfValuesToAdd(valuesToAdd: number[]): number {
   return 2;
 }

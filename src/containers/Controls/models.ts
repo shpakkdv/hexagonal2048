@@ -31,11 +31,12 @@ export namespace Payload {
 }
 
 export namespace Action {
-  export type SetCellSize = IAction<Payload.SetCellSize>;
   export type ChangeGamePlayMode = IAction<Payload.ChangeGamePlayMode>;
   export type ChangeGameSize = IAction<Payload.ChangeGameSize>;
+  export type InitiateField = IEmptyAction;
   export type Move = IAction<Payload.Move>;
   export type SetAppStatus = IAction<Payload.SetAppStatus>;
+  export type SetCellSize = IAction<Payload.SetCellSize>;
   export type SetGameMode = IAction<Payload.SetGameMode>;
   export type SetGamePlayMode = IAction<Payload.SetGamePlayMode>;
   export type SetGameSize = IAction<Payload.SetGameSize>;
@@ -43,9 +44,10 @@ export namespace Action {
 }
 
 export namespace ActionCreator {
-  export type Move = (direction: Direction) => Action.Move;
   export type ChangeGamePlayMode = (gamePlayMode: GamePlayMode) => Action.ChangeGamePlayMode;
   export type ChangeGameSize = (gameSize: number) => Action.ChangeGameSize;
+  export type InitiateField = () => Action.InitiateField;
+  export type Move = (direction: Direction) => Action.Move;
   export type SetAppStatus = (appStatus: AppStatus) => Action.SetAppStatus;
   export type SetCellSize = (cellSize: number) => Action.SetCellSize;
   export type SetGameMode = (gameMode: GameMode) => Action.SetGameMode;

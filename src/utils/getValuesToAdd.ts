@@ -7,6 +7,10 @@ export function getValuesToAdd(gameSize: number): number[] {
   return Array.from<number>({ length: Math.max(2, gameSize - 2) }).map((_, index) => 2 ** index).slice(1);
 }
 
-// function countHexItems(n: number) {
-//   return (n ** 2) * 3 - n * 3 + 1;
+// function getAmountOfRealCells(gameSize: number) {
+//   return (gameSize ** 2) * 3 - gameSize * 3 + 1;
+// }
+
+// function getAmountOfRealCells(field: HexagonArray) {
+//   return ...;
 // }

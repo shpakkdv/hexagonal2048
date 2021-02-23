@@ -31,7 +31,7 @@ export const Controls: React.FC<ControlsProps> = ({
   const isGameFinished = appStatus === AppStatus.Finished;
 
   return (
-    <div className={styles.Controls}>
+    <div className={styles.Controls} data-status={isGameFinished ? 'game-over' : 'playing'}>
       <div className={styles.column}>
         <div className={styles.settings}>
           <p onClick={onSettingsClick}><span>{isSettingsVisible ? '–' : '+'}</span>Game settings (click to expand/collapse)</p>
@@ -109,21 +109,21 @@ const PointyToppedButtons: React.FC<ButtonsProps> = ({ move, disabled }) => (
       </button>
     </div>
     <div>
-      <button disabled={disabled} onClick={() => move(Direction.TopLeft)}>
+      <button disabled={disabled} onClick={() => move(Direction.TopRight)}>
         <span className={styles.arrow}>➜</span>
         <span className={styles.text}>Q</span>
-        </button>
-      <button disabled={disabled} onClick={() => move(Direction.TopRight)}>
+      </button>
+      <button disabled={disabled} onClick={() => move(Direction.TopLeft)}>
         <span className={styles.text}>E</span>
         <span className={styles.arrow}>➜</span>
       </button>
     </div>
     <div>
-      <button disabled={disabled} onClick={() => move(Direction.BottomLeft)}>
+      <button disabled={disabled} onClick={() => move(Direction.BottomRight)}>
         <span className={styles.text}>A</span>
         <span className={styles.arrow}>➜</span>
       </button>
-      <button disabled={disabled} onClick={() => move(Direction.BottomRight)}>
+      <button disabled={disabled} onClick={() => move(Direction.BottomLeft)}>
         <span className={styles.arrow}>➜</span>
         <span className={styles.text}>D</span>
       </button>
