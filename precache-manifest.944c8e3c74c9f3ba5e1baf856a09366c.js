@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4d2fbbd48f5314a2de920dddc271e5b1",
+    "revision": "f318ae55499cded70aef05eee88ac0c1",
     "url": "/hexagonal2048/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hexagonal2048/static/css/2.24bf1742.chunk.css"
   },
   {
-    "revision": "3ceccf48e46f34fb89ad",
+    "revision": "cec979ef793035f5757e",
     "url": "/hexagonal2048/static/css/main.d689400c.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hexagonal2048/static/js/2.39127c37.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3ceccf48e46f34fb89ad",
-    "url": "/hexagonal2048/static/js/main.8a0637a4.chunk.js"
+    "revision": "cec979ef793035f5757e",
+    "url": "/hexagonal2048/static/js/main.0f49c81c.chunk.js"
   },
   {
     "revision": "f1a6b80909caecfca231",
