@@ -1,11 +1,11 @@
 import random from 'lodash/random';
 
-import type { CubeRealCell, HexagonArray } from 'models';
+import type { CubeRealCell, HexagonArray, RealCell } from 'models';
 import { toAxialCell, toCubeCell } from './coordinatesConverter';
 import { getEmptyCells, getNonEmptyCells } from './getCells';
 import { getRandomCells } from './getRandomCells';
 
-export function addRandomValuesToHexagonArray(field: HexagonArray, valuesToAdd: number[]): void {
+export function addRandomValuesToHexagonArray(field: HexagonArray, valuesToAdd: number[]): RealCell[] {
   const emptyCells = getEmptyCells(field);
   const amountOfValuesToAdd = getAmountOfValuesToAdd(valuesToAdd);
   const randomCells = getRandomCells(emptyCells, amountOfValuesToAdd);
@@ -15,15 +15,21 @@ export function addRandomValuesToHexagonArray(field: HexagonArray, valuesToAdd: 
     const valueToAdd = valuesToAdd[random(0, valuesToAdd.length - 1)];
     field[rowIndex][cellIndex]![2] = valueToAdd;
   });
+
+  return randomCells;
 }
 
-export async function addRandomValuesToHexagonArrayOnline(url: string, field: HexagonArray, gameSize: number): Promise<void> {
-  const nonEmptyCells = getNonEmptyCells(field);
+export async function addRandomValuesToHexagonArrayOnline(
+  url: string,
+  field: HexagonArray,
+  gameSize: number,
+): Promise<RealCell[]> {
+  // do not send request if no places to add new numbers
+  if (getEmptyCells(field).length === 0) {
+    return [];
+  }
 
-  // TODO
-  // if (nonEmptyCells.length === amountOfRealCells) {
-  //   return;
-  // }
+  const nonEmptyCells = getNonEmptyCells(field);
 
   const cubeStringifiedCells = JSON.stringify(nonEmptyCells.map(axialCell => toCubeCell(axialCell, gameSize)));
   const response = await fetch(url, { method: 'POST', body: cubeStringifiedCells });
@@ -34,6 +40,8 @@ export async function addRandomValuesToHexagonArrayOnline(url: string, field: He
     const [cellIndex, rowIndex, value] = cell;
     field[rowIndex][cellIndex]![2] = value;
   });
+
+  return axialCellsToAdd;
 }
 
 // TODO: create logic

@@ -7,3 +7,10 @@ export const setField: ActionCreator.SetField = (field) => ({
     field,
   },
 });
+
+export const setNewCellsToAnimate: ActionCreator.SetNewCellsToAnimate = (cells) => ({
+  type: ActionType.SET_NEW_CELLS_TO_ANIMATE,
+  payload: {
+    cells,
+  },
+});

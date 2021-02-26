@@ -3,7 +3,7 @@ import { put, select } from 'redux-saga/effects';
 
 import { AppStatus } from 'constant';
 import { setAppStatus } from 'containers/Controls/actions';
-import { setField } from 'containers/GameField/actions';
+import { setField, setNewCellsToAnimate } from 'containers/GameField/actions';
 import { createInitialGameField } from 'utils/createInitialGameField';
 import { setGameSize } from '../actions';
 import { Action } from '../models';
@@ -19,12 +19,13 @@ export function* changeGameSize(action: Action.ChangeGameSize) {
     }
 
     const gamePlayMode: ReturnSagaType<typeof controlsSelectors.gamePlayMode> = yield select(controlsSelectors.gamePlayMode);
-    const field = createInitialGameField(gameSize, gamePlayMode);
+    const { field, addedCells } = createInitialGameField(gameSize, gamePlayMode);
 
     yield put(batchActions([
       setGameSize(gameSize),
       setField(field),
       setAppStatus(AppStatus.InProgress),
+      setNewCellsToAnimate(addedCells),
     ]));
   } catch (error) {
     console.warn('Error occurred during changing game size.', error);

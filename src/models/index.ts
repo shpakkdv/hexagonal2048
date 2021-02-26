@@ -6,9 +6,9 @@ export type FakeCell = null;
 /** null or number among the range [2, 4, ... Math.pow(2, n)] */
 export type CellValue = number | null;
 
-/** Axial coordinates real cell info: `[q - rowIndex, r - cellIndex, value]` */
+/** Axial coordinates real cell info: `[q - cellIndex, r - rowIndex, value]` */
 export type RealCell = [number, number, CellValue];
-/** Axial coordinates cell info: `[q - rowIndex, r - cellIndex, value]` */
+/** Axial coordinates cell info: `[q - cellIndex, r - rowIndex, value]` */
 export type Cell = RealCell | FakeCell;
 export type HexagonArray = Cell[][];
 
@@ -39,5 +39,8 @@ export interface AppState {
 
   gameField: {
     field: HexagonArray;
+    animation: {
+      appearedCells: RealCell[];
+    };
   };
 }

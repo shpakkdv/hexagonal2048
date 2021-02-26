@@ -2,13 +2,22 @@ import classNames from 'classnames';
 import { clamp } from 'lodash';
 import React from 'react';
 
-import { GameMode } from 'constant';
+import { AppStatus, GameMode } from 'constant';
 import { toCubeCell } from 'utils/coordinatesConverter';
 import { getNonEmptyCells } from 'utils/getCells';
-import { GameFieldProps } from './models';
+import type { GameFieldProps } from './models';
 import styles from './styles.module.scss';
 
-export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, gameSize, cellSize, initiateField }) => {
+export const GameField: React.FC<GameFieldProps> = ({
+  appearedCells,
+  appStatus,
+  field,
+  gameMode,
+  gameSize,
+  cellSize,
+  initiateField,
+}) => {
+  const isGameFinished = appStatus === AppStatus.Finished;
   const isPointyMode = gameMode === GameMode.Pointy;
   const hexagonSize = `${cellSize}px`;
   const commonCellStyle: React.CSSProperties = {
@@ -19,6 +28,7 @@ export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, gameSize,
     padding: `0 ${cellSize * 0.1}px`,
     marginRight: `${isPointyMode ? 0 : cellSize * 0.125}px`,
     marginBottom: `${isPointyMode ? cellSize * 0.125 : 0}px`,
+    opacity: isGameFinished ? 0.55 : 1,
   };
   const isDevMode = !!(window as any).DEBBUG_DEV_MODE;
   const isFieldEmpty = getNonEmptyCells(field).length === 0;
@@ -46,16 +56,20 @@ export const GameField: React.FC<GameFieldProps> = ({ field, gameMode, gameSize,
                 const ratio = 10;
                 const gColor = valueLevel ? clamp(255 - valueLevel * ratio, 165, 255) : 255;
                 const bColor = valueLevel ? clamp(255 - valueLevel * ratio * 3, 0, 255) : 255;
-                const cellStyle = {
+                const isCellAnimated = appearedCells.some(([aQ, aR]) => q === aQ && r === aR);
+
+                const cellStyle: React.CSSProperties = {
                   ...commonCellStyle,
-                  backgroundColor: `rgb(255 ${gColor} ${bColor})`,
+                  backgroundColor: `rgba(255, ${gColor}, ${bColor})`,
                 };
+                isCellAnimated && (cellStyle.animationName = styles.cellsAppeared);
 
                 const { x, y, z } = toCubeCell(cell, gameSize);
 
                 return (
                   <div
-                    key={cell.join()}
+                    // NOTE: Math.random is needed to re-run animation
+                    key={cell.join() + isCellAnimated ? Math.random() : ''}
                     className={styles.item}
                     style={cellStyle}
                     title={title}
