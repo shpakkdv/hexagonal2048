@@ -1,6 +1,6 @@
 import { batchActions } from 'redux-batched-actions';
 import { call, put, select } from 'redux-saga/effects';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash';
 
 import { AppStatus, GamePlayMode } from 'constant';
 import { setAppStatus } from 'containers/Controls/actions';
@@ -29,6 +29,11 @@ export function* move(action: Action.Move) {
     const { direction } = action.payload;
 
     moveField(actualField, field, direction);
+
+    if (isEqual(actualField, field)) {
+      console.log('There are no any moves in this direction. Choose another one, please.');
+      return;
+    }
 
     // add new numbers
     if (gamePlayMode === GamePlayMode.Online) {
