@@ -1,4 +1,4 @@
-import { clamp, cloneDeep } from 'lodash';
+import { clamp } from 'lodash';
 
 interface LocationGameInfo {
   parsed: boolean;
@@ -13,7 +13,7 @@ const location: LocationGameInfo = {
 export function parseLocation(
   defaultGameSize: number,
   gameSizeRange: readonly [number, number],
-): LocationGameInfo | undefined {
+): Readonly<LocationGameInfo> | undefined {
   if (location.parsed) {
     return getLocationGameInfo();
   }
@@ -22,6 +22,8 @@ export function parseLocation(
   const { hash } = window.location;
 
   if (hash.startsWith(testHashPrefix)) {
+    (window as any).TEST_MODE = true;
+
     const parsedGameSize = parseInt(hash.replace(testHashPrefix, ''));
     const gameSize = isNaN(parsedGameSize) ? defaultGameSize : clamp(parsedGameSize, ...gameSizeRange);
     location.parsed = true;
@@ -31,12 +33,12 @@ export function parseLocation(
   }
 }
 
-export function getLocationGameInfo(): LocationGameInfo | undefined {
+export function getLocationGameInfo(): Readonly<LocationGameInfo> | undefined {
   if (!location.parsed) {
     return;
   }
 
-  return cloneDeep(location);
+  return location;
 }
 
 export function resetLocationGameInfo(): void {

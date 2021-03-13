@@ -11,13 +11,12 @@ import * as controlsSelectors from '../selectors';
 
 export function* changeGameSize(action: Action.ChangeGameSize) {
   try {
-    const { gameSize } = action.payload;
-
     const confirmed = confirm('Do you want to start a new game?');
     if (!confirmed) {
       return;
     }
 
+    const { gameSize } = action.payload;
     const gamePlayMode: ReturnSagaType<typeof controlsSelectors.gamePlayMode> = yield select(controlsSelectors.gamePlayMode);
     const { field, addedCells } = createInitialGameField(gameSize, gamePlayMode);
 

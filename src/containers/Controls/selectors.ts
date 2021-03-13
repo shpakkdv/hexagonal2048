@@ -8,3 +8,4 @@ export const gameMode = (state: AppState) => controls(state).gameMode;
 export const gamePlayMode = (state: AppState) => controls(state).gamePlayMode;
 export const appStatus = (state: AppState) => controls(state).appStatus;
 export const cellSize = (state: AppState) => controls(state).cellSize;
+export const url = (state: AppState) => controls(state).url;

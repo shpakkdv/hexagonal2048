@@ -36,6 +36,13 @@ export const setGameSize: ActionCreator.SetGameSize = (gameSize) => ({
   },
 });
 
+export const setUrl: ActionCreator.SetUrl = (url) => ({
+  type: ActionType.SET_URL,
+  payload: {
+    url,
+  },
+});
+
 export const changeGameSize: ActionCreator.ChangeGameSize = (gameSize) => ({
   type: ActionType.CHANGE_GAME_SIZE,
   payload: {
@@ -47,6 +54,13 @@ export const changeGamePlayMode: ActionCreator.ChangeGamePlayMode = (gamePlayMod
   type: ActionType.CHANGE_GAME_PLAY_MODE,
   payload: {
     gamePlayMode,
+  },
+});
+
+export const changeServerUrl: ActionCreator.ChangeServerUrl = (url) => ({
+  type: ActionType.CHANGE_SERVER_URL,
+  payload: {
+    url,
   },
 });
 

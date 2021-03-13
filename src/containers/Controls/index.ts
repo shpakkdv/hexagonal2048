@@ -5,12 +5,13 @@ import { Controls } from 'components/Controls';
 import {
   changeGamePlayMode,
   changeGameSize,
+  changeServerUrl,
   move,
   setCellSize,
   setGameMode,
   startOver,
 } from './actions';
-import { appStatus, cellSize, gameMode, gamePlayMode, gameSize } from './selectors';
+import { appStatus, cellSize, gameMode, gamePlayMode, gameSize, url } from './selectors';
 
 const mapStateToProps = createStructuredSelector({
   appStatus,
@@ -18,11 +19,13 @@ const mapStateToProps = createStructuredSelector({
   gameMode,
   gamePlayMode,
   gameSize,
+  url,
 });
 
 const mapDispatchToProps = {
   changeGamePlayMode,
   changeGameSize,
+  changeServerUrl,
   move,
   setCellSize,
   setGameMode,

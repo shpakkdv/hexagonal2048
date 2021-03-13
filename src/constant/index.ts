@@ -1,5 +1,8 @@
 // single constants
-export const SERVER_URL = 'http://51.15.207.127:13337/';
+export const REMOTE_HTTPS_SERVER_URL = 'https://68f02c80-3bed-4e10-a747-4ff774ae905a.pub.instances.scw.cloud/';
+/** http://163.172.152.235:13337/ */
+export const REMOTE_HTTP_SERVER_URL = 'http://68f02c80-3bed-4e10-a747-4ff774ae905a.pub.instances.scw.cloud/';
+export const LOCAL_SERVER_URL = 'http://localhost:13337/';
 export const DEFAULT_CELL_SIZE = 40;
 export const CELL_SIZE_RANGE = [3, 250] as const;
 export const DEFAULT_GAME_SIZE = 3;

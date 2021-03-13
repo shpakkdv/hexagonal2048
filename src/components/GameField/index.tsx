@@ -30,7 +30,7 @@ export const GameField: React.FC<GameFieldProps> = ({
     marginBottom: `${isPointyMode ? cellSize * 0.125 : 0}px`,
     opacity: isGameFinished ? 0.55 : 1,
   };
-  const isDevMode = !!(window as any).DEBBUG_DEV_MODE;
+  const isDevMode = !!(window as any).DEV_MODE;
   const isFieldEmpty = getNonEmptyCells(field).length === 0;
 
   if (isFieldEmpty) {

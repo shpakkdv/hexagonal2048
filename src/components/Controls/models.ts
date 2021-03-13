@@ -7,9 +7,11 @@ export interface ControlsProps {
   gameMode: GameMode;
   gamePlayMode: GamePlayMode;
   gameSize: number;
+  url: string;
 
   changeGamePlayMode: ControlsModels.ActionCreator.ChangeGamePlayMode;
   changeGameSize: ControlsModels.ActionCreator.ChangeGameSize;
+  changeServerUrl: ControlsModels.ActionCreator.ChangeServerUrl;
   move: ControlsModels.ActionCreator.Move;
   setCellSize: ControlsModels.ActionCreator.SetCellSize;
   setGameMode: ControlsModels.ActionCreator.SetGameMode;

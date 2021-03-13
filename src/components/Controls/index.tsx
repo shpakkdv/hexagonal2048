@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 
 import { NumericInput } from 'components/NumericInput';
 import { RadioButtons } from 'components/RadioButtons';
-import { AppStatus, Direction, GameMode, GamePlayMode, GAME_SIZE_RANGE, CELL_SIZE_RANGE } from 'constant';
+import { AppStatus, Direction, GameMode, GamePlayMode, GAME_SIZE_RANGE, CELL_SIZE_RANGE, REMOTE_HTTPS_SERVER_URL, LOCAL_SERVER_URL } from 'constant';
 import type * as ControlsModels from 'containers/Controls/models';
 import { ControlsProps } from './models';
 import styles from './styles.module.scss';
@@ -24,17 +24,29 @@ export const Controls: React.FC<ControlsProps> = ({
 
   cellSize,
   setCellSize,
+
+  url,
+  changeServerUrl,
 }) => {
-  const [isSettingsVisible, setSettingsVisibility] = useState(false);
+  const [isSettingsVisible, setSettingsVisibility] = useState(!!(window as any).TEST_MODE);
   const onSettingsClick = useCallback(() => setSettingsVisibility(visible => !visible), [setSettingsVisibility]);
+  const onChangeUrl = useCallback<React.ChangeEventHandler<HTMLSelectElement>>(event => changeServerUrl(event.target.value), [changeServerUrl]);
+
   const isFlatMode = gameMode === GameMode.Flat;
   const isGameFinished = appStatus === AppStatus.Finished;
 
   return (
-    <div className={styles.Controls} data-status={isGameFinished ? 'game-over' : 'playing'}>
-      <div className={styles.column}>
+    <div className={styles.Controls}>
+      <div className={classNames(styles.column, styles.columnSettings)}>
+        <div className={styles.gameStatus} data-status={isGameFinished ? 'game-over' : 'playing'}>
+          {'Game status: '}
+          <span>{isGameFinished ? 'Game Over' : 'Playing'}</span>
+        </div>
         <div className={styles.settings}>
-          <p onClick={onSettingsClick}><span>{isSettingsVisible ? '–' : '+'}</span>Game settings (click to expand/collapse)</p>
+          <p onClick={onSettingsClick}>
+            <span className={classNames({ [styles.mirrored]: isSettingsVisible })}>{'▾'}</span>
+            Game settings (click to expand/collapse)
+          </p>
           {isSettingsVisible && (
             <>
               <div>
@@ -73,13 +85,19 @@ export const Controls: React.FC<ControlsProps> = ({
                 <RadioButtons
                   title="Select a play game mode:"
                   options={[
-                    { id: GamePlayMode.Online, label: 'Online: play with server data' },
                     { id: GamePlayMode.Offline, label: 'Offline: generate data locally' },
+                    { id: GamePlayMode.Online, label: 'Online: play with server data' },
                   ]}
                   checkedId={gamePlayMode}
                   onChange={changeGamePlayMode}
                 />
               </div>
+              {gamePlayMode === GamePlayMode.Online && (
+                <select id="url-server" onChange={onChangeUrl} value={url}>
+                  <option id="remote" value={REMOTE_HTTPS_SERVER_URL}>Remote server</option>
+                  <option id="localhost" value={LOCAL_SERVER_URL}>Local server</option>
+                </select>
+              )}
             </>
           )}
         </div>

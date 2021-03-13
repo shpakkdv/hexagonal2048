@@ -35,6 +35,7 @@ export interface AppState {
     valuesToAdd: number[];
     gameMode: GameMode;
     gamePlayMode: GamePlayMode;
+    url: string;
   };
 
   gameField: {
