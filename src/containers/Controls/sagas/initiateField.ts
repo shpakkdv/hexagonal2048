@@ -10,6 +10,7 @@ import { isFieldMovable } from 'utils/isFieldMovable';
 import { Action } from '../models';
 import { addNewNumbers } from './services/addNewNumbers';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function* initiateField(action: Action.InitiateField) {
   try {
     // TODO: readonly

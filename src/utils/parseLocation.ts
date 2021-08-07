@@ -2,7 +2,7 @@ import { clamp } from 'lodash';
 
 interface LocationGameInfo {
   parsed: boolean;
-  gameSize: number,
+  gameSize: number;
 }
 
 const location: LocationGameInfo = {
@@ -24,7 +24,7 @@ export function parseLocation(
   if (hash.startsWith(testHashPrefix)) {
     (window as any).TEST_MODE = true;
 
-    const parsedGameSize = parseInt(hash.replace(testHashPrefix, ''));
+    const parsedGameSize = parseInt(hash.replace(testHashPrefix, ''), 10);
     const gameSize = isNaN(parsedGameSize) ? defaultGameSize : clamp(parsedGameSize, ...gameSizeRange);
     location.parsed = true;
     location.gameSize = gameSize;
@@ -45,4 +45,3 @@ export function resetLocationGameInfo(): void {
   window.location.hash = '';
   location.parsed = false;
 }
-

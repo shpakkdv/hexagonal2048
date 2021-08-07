@@ -1,7 +1,7 @@
 import type { HexagonArray, RealCell } from 'models';
 import { GamePlayMode } from 'constant';
-import { addRandomValuesToHexagonArray} from './addRandomValuesToHexagonArray';
-import { createAxialHexagonArray} from './createHexagonArray';
+import { addRandomValuesToHexagonArray } from './addRandomValuesToHexagonArray';
+import { createAxialHexagonArray } from './createHexagonArray';
 import { getValuesToAdd } from './getValuesToAdd';
 
 interface InitialGameField {

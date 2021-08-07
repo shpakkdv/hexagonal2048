@@ -40,51 +40,50 @@ export const GameField: React.FC<GameFieldProps> = ({
   return (
     <div className={classNames(styles.GameField, { [styles.pointy]: isPointyMode })}>
       {
-        field.map((row, rowIndex) => {
-          return (
-            <div className={styles.row} key={rowIndex}>
-              {row.map((cell) => {
-                if (!cell) {
-                  return null;
-                }
+        field.map((row, rowIndex) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <div className={styles.row} key={rowIndex}>
+            {row.map((cell) => {
+              if (!cell) {
+                return null;
+              }
 
-                const [q, r, value] = cell;
-                const displayValue = value || '';
-                const title = isDevMode ? `q: ${q}, r: ${r}, value: ${value}` : String(displayValue);
-                // TODO: create better logic
-                const valueLevel = value && Math.log2(value);
-                const ratio = 10;
-                const gColor = valueLevel ? clamp(255 - valueLevel * ratio, 165, 255) : 255;
-                const bColor = valueLevel ? clamp(255 - valueLevel * ratio * 3, 0, 255) : 255;
-                const isCellAnimated = appearedCells.some(([aQ, aR]) => q === aQ && r === aR);
+              const [q, r, value] = cell;
+              const displayValue = value || '';
+              const title = isDevMode ? `q: ${q}, r: ${r}, value: ${value}` : String(displayValue);
+              // TODO: create better logic
+              const valueLevel = value && Math.log2(value);
+              const ratio = 10;
+              const gColor = valueLevel ? clamp(255 - valueLevel * ratio, 165, 255) : 255;
+              const bColor = valueLevel ? clamp(255 - valueLevel * ratio * 3, 0, 255) : 255;
+              const isCellAnimated = appearedCells.some(([aQ, aR]) => q === aQ && r === aR);
 
-                const cellStyle: React.CSSProperties = {
-                  ...commonCellStyle,
-                  backgroundColor: `rgba(255, ${gColor}, ${bColor})`,
-                };
-                isCellAnimated && (cellStyle.animationName = styles.cellsAppeared);
+              const cellStyle: React.CSSProperties = {
+                ...commonCellStyle,
+                backgroundColor: `rgba(255, ${gColor}, ${bColor})`,
+              };
+              isCellAnimated && (cellStyle.animationName = styles.cellsAppeared);
 
-                const { x, y, z } = toCubeCell(cell, gameSize);
+              const { x, y, z } = toCubeCell(cell, gameSize);
 
-                return (
-                  <div
-                    // NOTE: Math.random is needed to re-run animation
-                    key={cell.join() + isCellAnimated ? Math.random() : ''}
-                    className={styles.item}
-                    style={cellStyle}
-                    title={title}
-                    data-x={x}
-                    data-y={y}
-                    data-z={z}
-                    data-value={value || 0}
-                  >
-                    {displayValue}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })
+              return (
+                <div
+                  // NOTE: Math.random is needed to re-run animation
+                  key={cell.join() + isCellAnimated ? Math.random() : ''}
+                  className={styles.item}
+                  style={cellStyle}
+                  title={title}
+                  data-x={x}
+                  data-y={y}
+                  data-z={z}
+                  data-value={value || 0}
+                >
+                  {displayValue}
+                </div>
+              );
+            })}
+          </div>
+        ))
       }
     </div>
   );

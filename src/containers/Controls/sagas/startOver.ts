@@ -9,6 +9,7 @@ import { setGameSize } from '../actions';
 import { Action } from '../models';
 import * as controlsSelectors from '../selectors';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function* startOver(action: Action.StartOver) {
   try {
     const confirmed = confirm('Do you want to start over?');

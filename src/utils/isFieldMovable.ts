@@ -1,7 +1,7 @@
 import { cloneDeep, isEqual } from 'lodash';
 
 import type { HexagonArray } from 'models';
-import { Direction} from 'constant';
+import { Direction } from 'constant';
 import { getEmptyCells } from './getCells';
 import { moveField } from './moveField';
 
@@ -17,7 +17,7 @@ export function isFieldMovable(field: HexagonArray): boolean {
 
   allDirections.forEach(direction => {
     const actualField = cloneDeep(fieldCopy);
-    moveField(actualField, fieldCopy, direction)
+    moveField(actualField, fieldCopy, direction);
   });
 
   return !isEqual(field, fieldCopy);

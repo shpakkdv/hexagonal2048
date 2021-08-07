@@ -43,21 +43,20 @@ export const NumericInput: React.FC<NumericInputProps> = ({
       return;
     }
 
-    const numericValue = integer ? parseInt(String(currentValue)) : Number(currentValue);
+    const numericValue = integer ? parseInt(String(currentValue), 10) : Number(currentValue);
     const newValue = clamp(numericValue, min, max);
 
     if (newValue !== value) {
       setCurrentValue(value);
       onChange(newValue);
     }
-  }, [integer, value, onChange, currentValue, setCurrentValue]);
+  }, [currentValue, integer, min, max, value, onChange]);
 
   const onKeyDown = useCallback<React.KeyboardEventHandler<HTMLInputElement>>((event) => {
     if (event.key === 'Enter') {
       onBlur(event as any);
     }
   }, [onBlur]);
-
 
   return (
     <div className={styles.NumericInput}>
@@ -76,4 +75,4 @@ export const NumericInput: React.FC<NumericInputProps> = ({
       <label htmlFor={id}>{`${label} (${min} - ${max})`}</label>
     </div>
   );
-}
+};

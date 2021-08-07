@@ -10,7 +10,7 @@ const { gameSize, gamePlayMode } = getDefaultGameInfo();
 const { field, addedCells } = createInitialGameField(gameSize, gamePlayMode);
 
 const initialState: State = {
-  field: field,
+  field,
   animation: {
     appearedCells: addedCells,
   },

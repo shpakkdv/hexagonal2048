@@ -45,6 +45,7 @@ export async function addRandomValuesToHexagonArrayOnline(
 }
 
 // TODO: create logic
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getAmountOfValuesToAdd(valuesToAdd: number[]): number {
   return 2;
 }

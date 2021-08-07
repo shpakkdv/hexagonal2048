@@ -43,8 +43,9 @@ export const Controls: React.FC<ControlsProps> = ({
           <span>{isGameFinished ? 'Game Over' : 'Playing'}</span>
         </div>
         <div className={styles.settings}>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
           <p onClick={onSettingsClick}>
-            <span className={classNames({ [styles.mirrored]: isSettingsVisible })}>{'▾'}</span>
+            <span className={classNames({ [styles.mirrored]: isSettingsVisible })}>▾</span>
             Game settings (click to expand/collapse)
           </p>
           {isSettingsVisible && (
@@ -161,7 +162,7 @@ const FlatToppedButtons: React.FC<ButtonsProps> = ({ move, disabled }) => (
       <button disabled={disabled} onClick={() => move(Direction.TopRight)}>
         <span className={styles.arrow}>➜</span>
         <span className={styles.text}>W</span>
-        </button>
+      </button>
       <button disabled={disabled} onClick={() => move(Direction.BottomRight)}>
         <span className={styles.text}>E</span>
         <span className={styles.arrow}>➜</span>

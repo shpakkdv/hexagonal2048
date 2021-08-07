@@ -28,4 +28,4 @@ document.addEventListener('keyup', ({ code }) => {
   if (keyCodesToHandle.includes(code as any)) {
     return store.dispatch(move(directionByKeyCode[code]));
   }
-})
+});

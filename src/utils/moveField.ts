@@ -12,7 +12,7 @@ export function moveField(
 
   // bottom
   if (direction === Direction.Bottom) {
-    const getDirectionRow: GetDirectionRow = (field, r, q) => field[r];
+    const getDirectionRow: GetDirectionRow = (field, r) => field[r];
 
     for (let q = length - 1; q >= 0; q--) {
       for (let r = 0; r < length; r++) {
@@ -23,7 +23,7 @@ export function moveField(
 
   // bottom reverse
   if (direction === Direction.Top) {
-    const getDirectionRow: GetDirectionRow = (field, r, q) => field[r].slice().reverse();
+    const getDirectionRow: GetDirectionRow = (field, r) => field[r].slice().reverse();
 
     for (let q = 0; q < length; q++) {
       for (let r = 0; r < length; r++) {
@@ -80,7 +80,7 @@ export function moveField(
 
     cellsToIterate.forEach(cell => {
       moveCell(actualField, field, cell![1], cell![0], getDirectionRowReversed);
-    })
+    });
   }
 
   // bottom-right reverse
@@ -109,6 +109,6 @@ export function moveField(
 
     cellsToIterate.forEach(cell => {
       moveCell(actualField, field, cell![1], cell![0], getDirectionRow);
-    })
+    });
   }
 }

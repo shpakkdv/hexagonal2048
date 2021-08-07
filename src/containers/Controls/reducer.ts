@@ -10,10 +10,10 @@ import { State, Action } from './models';
 const { gameSize, gamePlayMode, url } = getDefaultGameInfo();
 
 const initialState: State = {
-  gameSize: gameSize,
+  gameSize,
   valuesToAdd: getValuesToAdd(gameSize),
   gameMode: GameMode.Pointy,
-  gamePlayMode: gamePlayMode,
+  gamePlayMode,
   appStatus: AppStatus.InProgress,
   cellSize: DEFAULT_CELL_SIZE,
   url,

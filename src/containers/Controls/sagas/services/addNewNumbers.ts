@@ -24,7 +24,7 @@ export function* addNewNumbers(field: HexagonArray): Generator<unknown, RealCell
     const valuesToAdd: ReturnSagaType<typeof controlsSelectors.valuesToAdd> = yield select(controlsSelectors.valuesToAdd);
     newCells = addRandomValuesToHexagonArray(field, valuesToAdd);
   }
-  console.log(JSON.stringify(newCells))
+  console.log(JSON.stringify(newCells));
 
   return newCells;
 }

@@ -6,6 +6,6 @@ export interface RadioButtonOption {
 export interface RadioButtonsProps {
   title: string;
   checkedId: string;
-  options: RadioButtonOption[]
+  options: RadioButtonOption[];
   onChange: (id: string) => void;
 }

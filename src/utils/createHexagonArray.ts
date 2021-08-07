@@ -54,7 +54,7 @@ export function createCubeHexagonArray(size: number): HexagonCubeArray {
 
     const x = index2 + 1 - size;
     const z = index1 + 1 - size;
-    const y = - x - z;
+    const y = -x - z;
 
     return { x, y, z, value: null };
   }));

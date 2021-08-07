@@ -24,4 +24,4 @@ export const RadioButtons: React.FC<RadioButtonsProps> = ({
       ))}
     </form>
   );
-}
+};

@@ -4,7 +4,7 @@ export function toCubeCell(cell: RealCell, gameSize: number): CubeRealCell {
   const [q, r, value] = cell;
   const z = q + 1 - gameSize;
   const x = r + 1 - gameSize;
-  const y = - x - z;
+  const y = -x - z;
 
   return { x, y, z, value };
 }
