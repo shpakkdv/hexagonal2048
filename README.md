@@ -1,5 +1,7 @@
 # **Hexagonal 2048**
 
+The link to play: [**Hexagonal 2048**](https://shpakkdv.github.io/hexagonal2048/).
+
 ## *Installation*
 
 `git clone https://github.com/shpakkdv/hexagonal2048.git`<br />
@@ -28,3 +30,7 @@ The build is minified and the filenames include the hashes.<br />
 The app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run deploy`
+
+Runs `npm run build` and deploys the output to [GitHub pages](https://shpakkdv.github.io/hexagonal2048/).
